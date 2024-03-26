@@ -2,10 +2,10 @@ import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from poms.comment_page_objects import CheckComment
-from configs.config import login, link_admin, send_options, comment, link_guest
-from credentials import email, password
-from poms.guest_page_objects import GuestPage
+from poms.CommentPageObjects import CheckComment
+from configs.Config import login, link_admin, send_options, comment, link_guest
+from Credentials import email, password
+from poms.GuestPageObjects import GuestPage
 
 global get_comment_admin_id
 

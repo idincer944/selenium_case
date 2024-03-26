@@ -1,10 +1,10 @@
 import pytest
 from selenium import webdriver
-from configs.config import login
-from credentials import email, password
-from configs.config import link_admin, send_options
-from poms.add_post_page_objects import AddPost
-from poms.delete_post_page_objects import DeletePost
+from configs.Config import login
+from Credentials import email, password
+from configs.Config import link_admin, send_options
+from poms.AddPostPageObjects import AddPost
+from poms.DeletePostPageObjects import DeletePost
 
 
 class TestDeletePost:

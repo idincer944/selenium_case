@@ -1,5 +1,5 @@
 from selenium import webdriver
-from poms.admin_login_page_objects import LoginPage
+from poms.AdminLoginPageObjects import LoginPage
 
 link_admin = "https://www.blogger.com/about/?bpli=1"
 link_guest = "https://idincer944.blogspot.com/"

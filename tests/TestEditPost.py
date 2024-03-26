@@ -1,8 +1,8 @@
 import pytest
 from selenium import webdriver
-from poms.edit_post_page_objects import EditPost
-from configs.config import login, link_admin, send_options, edit_text
-from credentials import email, password
+from poms.EditPostPageObjects import EditPost
+from configs.Config import login, link_admin, send_options, edit_text
+from Credentials import email, password
 
 
 class TestEditPost:
