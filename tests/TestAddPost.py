@@ -1,8 +1,8 @@
 import pytest
 from selenium import webdriver
-from poms.add_post_page_objects import AddPost
-from configs.config import login, link_admin, send_options, text, img_url
-from credentials import email, password
+from poms.AddPostPageObjects import AddPost
+from configs.Config import login, link_admin, send_options, text, img_url
+from Credentials import email, password
 
 
 class TestAddPost:

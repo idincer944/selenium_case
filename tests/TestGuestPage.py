@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from configs.config import link_guest, send_options, comment
-from poms.guest_page_objects import GuestPage
+from configs.Config import link_guest, send_options, comment
+from poms.GuestPageObjects import GuestPage
 
 
 class TestGuestPage:

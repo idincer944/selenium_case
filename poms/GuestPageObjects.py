@@ -1,8 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
-from configs.config import login
-from credentials import email, password
+from configs.Config import login
+from Credentials import email, password
 
 
 class GuestPage:

@@ -1,6 +1,6 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from poms.guest_page_objects import GuestPage
+from poms.GuestPageObjects import GuestPage
 
 
 class CheckComment:

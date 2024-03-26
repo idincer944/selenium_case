@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from configs.config import link_admin, send_options, login
-from credentials import email, password
+from configs.Config import link_admin, send_options, login
+from Credentials import email, password
 
 
 class TestLogin:
