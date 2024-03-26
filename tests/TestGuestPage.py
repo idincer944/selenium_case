@@ -10,7 +10,6 @@ class TestGuestPage:
         self.driver = setup_driver
         self.gp = GuestPage(self.driver)
         is_post = self.gp.check_post()
-        self.driver.close()
 
         assert is_post
 
@@ -22,6 +21,5 @@ class TestGuestPage:
         self.gp.add_comment(comment)
         comments_list = self.gp.check_comments()
         comment_text = comments_list[-1].text
-        self.driver.close()
 
         assert comment in comment_text

@@ -1,5 +1,5 @@
-import pytest
 import logging
+import pytest
 from selenium import webdriver
 from poms.AdminLoginPageObjects import LoginPage
 
@@ -16,7 +16,9 @@ edit_text = " This is my Edit........."
 comment = "hello I'm a comment"
 title_name = "Blogger"
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename='test.log',
+                    filemode='w', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 @pytest.fixture()
@@ -29,6 +31,7 @@ def setup_driver(request):
     driver.get(link)
     driver.maximize_window()
     yield driver
+    driver.close()
 
 
 def login(driver, _email, _password):

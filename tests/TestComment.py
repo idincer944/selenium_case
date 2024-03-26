@@ -2,7 +2,7 @@ import time
 import pytest
 from selenium.webdriver.common.by import By
 from poms.CommentPageObjects import CheckComment
-from configs.Config import login, link_admin, comment, link_guest
+from configs.Config import login, link_admin, comment, link_guest, setup_driver
 from Credentials import email, password
 from poms.GuestPageObjects import GuestPage
 global get_comment_admin_id
@@ -21,7 +21,7 @@ class TestCheckComment:
         _last_comment = self.cc.check_comment_admin_page().text
         global get_comment_admin_id
         get_comment_admin_id = self.cc.get_comment_admin_id()
-        self.driver.close()
+        # self.driver.close()
         assert comment in _last_comment
 
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
@@ -35,7 +35,7 @@ class TestCheckComment:
         self.cc.click_comments()
         self.cc.click_delete_comment()
         time.sleep(3)
-        self.driver.close()
+        # self.driver.close()
 
     @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
     @pytest.mark.order(8)
@@ -52,6 +52,5 @@ class TestCheckComment:
         global get_comment_admin_id
         before_id = "c" + str(get_comment_admin_id)
         after_id = self.comment_id_with_c
-        self.driver.close()
 
         assert before_id != after_id
