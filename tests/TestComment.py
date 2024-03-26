@@ -1,23 +1,18 @@
 import time
 import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from poms.CommentPageObjects import CheckComment
-from configs.Config import login, link_admin, send_options, comment, link_guest
+from configs.Config import login, link_admin, comment, link_guest
 from Credentials import email, password
 from poms.GuestPageObjects import GuestPage
-
 global get_comment_admin_id
 
 
 class TestCheckComment:
+    @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(6)
-    def test_check_comment(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_admin)
-        self.driver.maximize_window()
+    def test_check_comment(self, setup_driver):
+        self.driver = setup_driver
 
         login(self.driver, email, password)
 
@@ -29,13 +24,10 @@ class TestCheckComment:
         self.driver.close()
         assert comment in _last_comment
 
+    @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(7)
-    def test_delete_comment(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_admin)
-        self.driver.maximize_window()
+    def test_delete_comment(self, setup_driver):
+        self.driver = setup_driver
 
         login(self.driver, email, password)
 
@@ -45,13 +37,10 @@ class TestCheckComment:
         time.sleep(3)
         self.driver.close()
 
+    @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
     @pytest.mark.order(8)
-    def test_comment_status(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_guest)
-        self.driver.maximize_window()
+    def test_comment_status(self, setup_driver):
+        self.driver = setup_driver
 
         self.gp = GuestPage(self.driver)
         self.driver.find_element(By.XPATH, self.gp.a_comment_xpath).click()

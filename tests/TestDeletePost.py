@@ -1,20 +1,16 @@
 import pytest
-from selenium import webdriver
 from configs.Config import login
 from Credentials import email, password
-from configs.Config import link_admin, send_options
+from configs.Config import link_admin, setup_driver
 from poms.AddPostPageObjects import AddPost
 from poms.DeletePostPageObjects import DeletePost
 
 
 class TestDeletePost:
+    @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(9)
-    def test_delete_post(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_admin)
-        self.driver.maximize_window()
+    def test_delete_post(self, setup_driver):
+        self.driver = setup_driver
 
         login(self.driver, email, password)
 

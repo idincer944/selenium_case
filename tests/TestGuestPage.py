@@ -1,32 +1,23 @@
 import pytest
-from selenium import webdriver
-from configs.Config import link_guest, send_options, comment
+from configs.Config import link_guest, comment, setup_driver
 from poms.GuestPageObjects import GuestPage
 
 
 class TestGuestPage:
+    @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
     @pytest.mark.order(4)
-    def test_guest_page_post(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_guest)
-        self.driver.maximize_window()
-
+    def test_guest_page_post(self, setup_driver):
+        self.driver = setup_driver
         self.gp = GuestPage(self.driver)
         is_post = self.gp.check_post()
         self.driver.close()
 
         assert is_post
 
+    @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
     @pytest.mark.order(5)
-    def test_guest_page_comment(self):
-        options = send_options()
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_guest)
-        self.driver.maximize_window()
-
+    def test_guest_page_comment(self, setup_driver):
+        self.driver = setup_driver
         self.gp = GuestPage(self.driver)
         self.gp.add_comment(comment)
         comments_list = self.gp.check_comments()
@@ -34,4 +25,3 @@ class TestGuestPage:
         self.driver.close()
 
         assert comment in comment_text
-

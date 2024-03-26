@@ -1,20 +1,14 @@
 import pytest
-from selenium import webdriver
 from poms.EditPostPageObjects import EditPost
-from configs.Config import login, link_admin, send_options, edit_text
+from configs.Config import login, link_admin, edit_text, setup_driver
 from Credentials import email, password
 
 
 class TestEditPost:
+    @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(3)
-    def test_edit_post(self):
-        options = send_options()
-        # Setting the driver path and requesting a page
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_admin)
-        self.driver.maximize_window()
-
+    def test_edit_post(self, setup_driver):
+        self.driver = setup_driver
         login(self.driver, email, password)
 
         self.ep = EditPost(self.driver)

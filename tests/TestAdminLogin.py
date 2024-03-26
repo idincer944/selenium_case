@@ -1,18 +1,14 @@
 import pytest
-from selenium import webdriver
-from configs.Config import link_admin, send_options, login
+from configs.Config import link_admin, login, setup_driver
 from Credentials import email, password
 
 
 class TestLogin:
     """ This test is trying to figure out if it logins using admin credentials"""
+    @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(1)
-    def test_login(self):
-        # Setting the driver path and requesting a page
-        self.driver = webdriver.Chrome(options=send_options())
-        self.driver.implicitly_wait(10)
-        self.driver.get(link_admin)
-        self.driver.maximize_window()
+    def test_login(self, setup_driver):
+        self.driver = setup_driver
         login(self.driver, email, password)
         self.act_title = self.driver.title
         self.driver.close()

@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from poms.AdminLoginPageObjects import LoginPage
 
@@ -13,6 +14,17 @@ text = ("What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing an
 edit_text = " This is my Edit........."
 comment = "hello I'm a comment"
 
+
+@pytest.fixture()
+def setup_driver(request):
+    options = send_options()
+    link = request.param
+    # Setting the driver path and requesting a page
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(10)
+    driver.get(link)
+    driver.maximize_window()
+    yield driver
 
 def login(driver, _email, _password):
     lp = LoginPage(driver)
