@@ -1,6 +1,5 @@
 import pytest
-import logging
-from configs.Config import link_admin, login, setup_driver, title_name
+from configs.Config import link_admin, login, setup_driver, title_name, log_details
 from Credentials import email, password
 
 """
@@ -17,10 +16,10 @@ class TestLogin:
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(1)
     def test_login(self, setup_driver):
-        self.logger = logging.getLogger('selenium')
+        self.logger = log_details()
         self.logger.info("1. Open browser and visit blogger.com")
         self.driver = setup_driver
-        self.logger.info("Browser opened successfully")
+        self.logger.info("Browser opened successfully!")
 
         self.logger.info("2. Handle login")
         login(self.driver, email, password)
