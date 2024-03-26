@@ -1,4 +1,5 @@
 import pytest
+import logging
 from selenium import webdriver
 from poms.AdminLoginPageObjects import LoginPage
 
@@ -13,6 +14,9 @@ text = ("What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing an
         "software like Aldus PageMaker including versions of Lorem Ipsum.")
 edit_text = " This is my Edit........."
 comment = "hello I'm a comment"
+title_name = "Blogger"
+
+logging.basicConfig(level=logging.INFO)
 
 
 @pytest.fixture()
@@ -26,16 +30,25 @@ def setup_driver(request):
     driver.maximize_window()
     yield driver
 
+
 def login(driver, _email, _password):
     lp = LoginPage(driver)
+    logger = logging.getLogger("selenium")
+    logger.info("Check if there is signin button")
     try:
+        logger.info("Click signin button")
         lp.click_sign_in()
     except:
         pass
+    logger.info("Enters email")
     lp.set_email(_email)
+    logger.info("Clicks next")
     lp.click_next()
+    logger.info("Enters password")
     lp.set_password(_password)
+    logger.info("Clicks next and logins")
     lp.click_login()
+    logger.info("Logged in successfully!")
 
 
 def send_options():

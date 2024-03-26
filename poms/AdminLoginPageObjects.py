@@ -15,26 +15,40 @@ class LoginPage:
 
     # Action Methods
     def click_sign_in(self):
+        """
+        This function clicks signin button
+        """
         self.driver.find_element(By.XPATH, self.button_sign_in_xpath).click()
 
     def set_email(self, email):
         """
         This function types email into email text box
-        :param email:
+        :param email: This parameter is the user email used for signin/login
         """
         email_txt = self.driver.find_element(By.ID, self.txtbox_email_id)
         email_txt.clear()
         email_txt.send_keys(email)
 
     def click_next(self):
+        """
+        This function email clicks the next button after entering email
+        """
         self.driver.find_element(By.XPATH, self.button_next_xpath).click()
 
     def set_password(self, password):
+        """
+        This function enters password into password text box
+        :param password: This parameter is the user password used for signin/login
+        """
         password_txt = self.driver.find_element(By.NAME, self.txtbox_password_name)
         password_txt.clear()
         password_txt.send_keys(password)
 
     def click_login(self):
+        """
+        This function email clicks the next button after entering password. Since both buttons are named 'next' in the
+        website, this one is called 'click_login' to avoid duplicate function names
+        """
         self.driver.find_element(By.XPATH, self.button_login_xpath).click()
 
 
