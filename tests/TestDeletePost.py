@@ -22,7 +22,6 @@ class TestDeletePost:
         self.dp.click_delete_post()
         self.driver.refresh()
         post_count_updated = self.ap.count_of_posts()
-        self.driver.close()
 
         assert post_count_updated == post_count - 1
 

@@ -24,7 +24,6 @@ class TestAddPost:
         self.driver.refresh()
         post_count_updated = self.ap.count_of_posts()
         element_text = self.ap.get_published()
-        self.driver.close()
 
         # Check if a new post added
         assert post_count_updated == post_count + 1

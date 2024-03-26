@@ -15,4 +15,3 @@ class TestEditPost:
         self.ep.click_post()
         self.ep.edit_post(edit_text)
         self.ep.update_post()
-        self.driver.close()
