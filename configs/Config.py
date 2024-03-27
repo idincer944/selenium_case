@@ -22,7 +22,7 @@ def log_details():
     cwd_path = os.getcwd()
     print("Path is: ", cwd_path)
     logging.basicConfig(filename="test.log",
-                        filemode="w",
+                        filemode="a",
                         level=logging.INFO,
                         format="%(asctime)s - %(levelname)s - %(message)s",
                         force=True)
