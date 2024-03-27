@@ -16,6 +16,10 @@ class AddPost:
     button_select_id = "picker:ap:0"
     button_publish_xpath = "//div[@aria-label='Publish'] //span[@class='CwaK9']"
     post_list_class = "gNK4lf"
+    delete_icon_xpath = "(//span[@class='DPvwYc'][contains(text(),'')])[2]"
+    button_trash_post_xpath = "//*[@id='yDmH0d']/div[4]/div/div[2]/div[3]/div[2]/span/span"
+    button_manage_xpath = "//div[@title='Manage Post List']"
+    select_box_xpath = "//div[@aria-label='Select']"
 
     # Constructor
     def __init__(self, driver):
@@ -90,3 +94,15 @@ class AddPost:
         """
         post_elements = self.driver.find_elements(By.CLASS_NAME, self.post_list_class)
         return post_elements[0].text
+
+    def click_delete_post(self):
+        """
+        This function gets the last post and clicks the trash bin icon to delete the post
+        """
+        action = ActionChains(self.driver)
+        post_list = self.driver.find_elements(By.CLASS_NAME, self.post_list_class)
+        action.move_to_element(post_list[0]).perform()
+        time.sleep(3)
+        self.driver.find_element(By.XPATH, self.delete_icon_xpath).click()
+        self.driver.find_element(By.XPATH, self.button_trash_post_xpath).click()
+        time.sleep(3)
