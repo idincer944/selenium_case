@@ -8,7 +8,7 @@ from poms.DeletePostPageObjects import DeletePost
 
 class TestDeletePost:
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
-    @pytest.mark.order(9)
+    @pytest.mark.order(8)
     def test_delete_post(self, setup_driver):
         self.driver = setup_driver
 

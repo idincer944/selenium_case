@@ -57,7 +57,8 @@ class TestAddPost:
         self.driver.refresh()
         post_count_updated = self.ap.count_of_posts()
         self.logger.info(
-            f"9. Refresh the page to get the right amount of post list count and store it in post_count_updated -> {post_count_updated}")
+            f"9. Refresh the page to get the right amount of post list count and store it in post_count_updated -> "
+            f"{post_count_updated}")
 
         element_text = self.ap.get_published()
         self.logger.info("10. Get post status text and store it in element_text")

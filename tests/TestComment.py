@@ -10,7 +10,7 @@ global get_comment_admin_id
 
 class TestCheckComment:
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
-    @pytest.mark.order(6)
+    @pytest.mark.order(5)
     def test_check_comment(self, setup_driver):
         self.driver = setup_driver
 
@@ -25,7 +25,7 @@ class TestCheckComment:
         assert comment in _last_comment
 
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
-    @pytest.mark.order(7)
+    @pytest.mark.order(6)
     def test_delete_comment(self, setup_driver):
         self.driver = setup_driver
 
@@ -38,7 +38,7 @@ class TestCheckComment:
         # self.driver.close()
 
     @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
-    @pytest.mark.order(8)
+    @pytest.mark.order(7)
     def test_comment_status(self, setup_driver):
         self.driver = setup_driver
 
