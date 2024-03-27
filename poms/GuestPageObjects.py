@@ -57,4 +57,3 @@ class GuestPage:
         self.driver.switch_to.default_content()
         comments = self.driver.find_elements(By.XPATH, self.check_comments_xpath)
         return comments
-
