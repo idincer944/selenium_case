@@ -13,7 +13,7 @@ text = ("What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing an
         "leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the "
         "release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing "
         "software like Aldus PageMaker including versions of Lorem Ipsum.")
-edit_text = " This is my Edit........."
+edit_text = "This is my Edit........."
 comment = "hello I'm a comment"
 title_name = "Blogger"
 
@@ -22,7 +22,7 @@ def log_details():
     cwd_path = os.getcwd()
     print("Path is: ", cwd_path)
     logging.basicConfig(filename="test.log",
-                        filemode="w",
+                        filemode="a",
                         level=logging.INFO,
                         format="%(asctime)s - %(levelname)s - %(message)s",
                         force=True)

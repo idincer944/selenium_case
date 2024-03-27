@@ -17,6 +17,7 @@ class TestLogin:
     @pytest.mark.order(1)
     def test_login(self, setup_driver):
         self.logger = log_details()
+        self.logger.info("-----Testing Login-----")
         self.logger.info("1. Open browser and visit blogger.com")
         self.driver = setup_driver
         self.logger.info("Browser opened successfully!")

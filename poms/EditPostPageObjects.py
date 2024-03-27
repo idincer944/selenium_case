@@ -1,5 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class EditPost:
@@ -16,19 +18,25 @@ class EditPost:
 
     # Action Methods
     def click_post(self):
-        time.sleep(3)
+        """
+        This function clicks the last post
+        """
         self.driver.find_element(By.CLASS_NAME, self.a_post_class).click()
 
     def edit_post(self, text):
-        # self.driver.switch_to.frame(self.driver.find_elements(By.TAG_NAME, 'iframe')[0])
+        """
+        This function enters new text into title box
+        :param text: This parameter is the new text that is entered
+        """
         time.sleep(3)
-        post_text = self.driver.find_element(By.CSS_SELECTOR, "input[aria-label='Title']")
+        post_text = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "input[aria-label='Title']"))
+        )
         post_text.clear()
         post_text.send_keys(text)
 
     def update_post(self):
+        """
+        This function clicks Update button
+        """
         self.driver.find_element(By.XPATH, self.button_publish_xpath).click()
-
-    # def get_editted_element(self):
-    #     element = self.driver.find_element(By.XPATH, self.txtbox_title_css)
-    #     return element.text
