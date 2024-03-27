@@ -1,5 +1,5 @@
 import pytest
-from poms.AddPostPageObjects import AddPost
+from poms.AdminHomePageObjects import AddPost
 from configs.Config import login, link_admin, text, img_url, setup_driver, log_details
 from Credentials import email, password
 

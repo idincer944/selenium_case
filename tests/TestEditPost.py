@@ -1,6 +1,6 @@
 import time
 import pytest
-from poms.AddPostPageObjects import AddPost
+from poms.AdminHomePageObjects import AddPost
 from poms.EditPostPageObjects import EditPost
 from configs.Config import login, link_admin, edit_text, setup_driver, log_details
 from Credentials import email, password

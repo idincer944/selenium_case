@@ -2,7 +2,7 @@ import pytest
 from configs.Config import login, log_details
 from Credentials import email, password
 from configs.Config import link_admin, setup_driver
-from poms.AddPostPageObjects import AddPost
+from poms.AdminHomePageObjects import AddPost
 
 """
 1. Open browser and visit blogger.com
