@@ -18,6 +18,7 @@ from Credentials import email, password
 
 
 class TestEditPost:
+    """ This test is trying to figure out if it can edit a post """
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(3)
     def test_edit_post(self, setup_driver):

@@ -12,6 +12,7 @@ from poms.GuestPageObjects import GuestPage
 
 
 class TestGuestPage:
+    """ This test is trying to figure out if it can add comment to a post """
     @pytest.mark.parametrize("setup_driver", [link_guest], indirect=True)
     @pytest.mark.order(4)
     def test_guest_page(self, setup_driver):

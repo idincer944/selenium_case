@@ -27,6 +27,11 @@ global comment_id_admin
 
 
 class TestCheckComment:
+    """ This test is trying to figure out if
+        1. the comment exists
+        2. it can delete comment
+        3. the comment is deleted
+    """
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(5)
     def test_check_comment(self, setup_driver):

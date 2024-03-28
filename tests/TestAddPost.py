@@ -20,6 +20,7 @@ from Credentials import email, password
 
 
 class TestAddPost:
+    """This test tries to figure out if it can add post"""
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(2)
     def test_add_post(self, setup_driver):

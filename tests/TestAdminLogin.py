@@ -12,7 +12,7 @@ from Credentials import email, password
 
 
 class TestLogin:
-    """ This test is trying to figure out if it logins using admin credentials"""
+    """ This test is trying to figure out if it logins using admin credentials """
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(1)
     def test_login(self, setup_driver):

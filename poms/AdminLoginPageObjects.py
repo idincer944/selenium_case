@@ -50,5 +50,3 @@ class LoginPage:
         website, this one is called 'click_login' to avoid duplicate function names
         """
         self.driver.find_element(By.XPATH, self.button_login_xpath).click()
-
-

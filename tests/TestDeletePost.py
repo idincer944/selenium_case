@@ -16,6 +16,7 @@ from poms.AdminHomePageObjects import AddPost
 
 
 class TestDeletePost:
+    """ This test is trying to figure out if it can delete post """
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
     @pytest.mark.order(8)
     def test_delete_post(self, setup_driver):
