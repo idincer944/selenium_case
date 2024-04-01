@@ -28,7 +28,7 @@ class EditPost:
         This function enters new text into title box
         :param text: This parameter is the new text that is entered
         """
-        time.sleep(3)
+        time.sleep(2)  # Explicit wait doesn't work so I add this sleep here.
         post_text = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "input[aria-label='Title']"))
         )

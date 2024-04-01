@@ -45,9 +45,7 @@ class GuestPage:
         login(self.driver, email, password)
         self.driver.switch_to.frame(self.driver.find_element(By.XPATH, self.frame_for_button_xpath))
         self.driver.find_element(By.XPATH, self.txtbox_comment_xpath).send_keys(comment)
-        time.sleep(2)
         self.driver.find_element(By.XPATH, self.button_publish_comment_xpath).click()
-        time.sleep(3)
 
     def check_comments(self):
         """

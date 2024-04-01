@@ -1,5 +1,5 @@
 import pytest
-from configs.Config import login, log_details
+from configs.Config import login, log_details, take_screenshot
 from Credentials import email, password
 from configs.Config import link_admin, setup_driver
 from poms.AdminHomePageObjects import AddPost
@@ -45,5 +45,5 @@ class TestDeletePost:
                          f"post_count_updated -> {post_count_updated}")
 
         self.logger.info("6. Compare post_count and post_count_updated and see if it decreased by 1")
-        assert post_count_updated == post_count - 1
+        assert post_count_updated == post_count - 1, take_screenshot(self.driver)
         self.logger.info("7. Close browser")

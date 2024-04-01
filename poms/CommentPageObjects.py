@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from poms.GuestPageObjects import GuestPage
@@ -42,6 +44,7 @@ class CheckComment:
         action.move_to_element(last_comment).perform()
         self.driver.find_element(By.XPATH, self.delete_icon_xpath).click()
         self.driver.find_element(By.XPATH, self.delete_button_xpath).click()
+        time.sleep(1)
 
     def get_comment_admin_id(self):
         """

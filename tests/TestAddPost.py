@@ -1,6 +1,6 @@
 import pytest
 from poms.AdminHomePageObjects import AddPost
-from configs.Config import login, link_admin, text, img_url, setup_driver, log_details
+from configs.Config import login, link_admin, text, img_url, setup_driver, log_details, take_screenshot
 from Credentials import email, password
 
 """
@@ -65,7 +65,7 @@ class TestAddPost:
         self.logger.info("10. Get post status text and store it in element_text")
 
         self.logger.info("11. Compare post_count and post_count_updated and see if it increased by 1")
-        assert post_count_updated == post_count + 1
+        assert post_count_updated == post_count + 1, take_screenshot(self.driver)
 
         self.logger.info("12. Check if post status is 'Published'")
-        assert "Published" in element_text, "The first element does not contain 'Published'"
+        assert "Published" in element_text, take_screenshot(self.driver)

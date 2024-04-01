@@ -1,5 +1,5 @@
 import pytest
-from configs.Config import link_admin, login, setup_driver, title_name, log_details
+from configs.Config import link_admin, login, setup_driver, title_name, log_details, take_screenshot
 from Credentials import email, password
 
 """
@@ -30,4 +30,4 @@ class TestLogin:
         self.logger.info("6. Close browser")
 
         self.logger.info("7. Compare act_title and the right title 'Blogger'")
-        assert self.act_title == title_name
+        assert self.act_title == title_name, take_screenshot(self.driver)
