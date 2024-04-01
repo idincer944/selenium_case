@@ -1,7 +1,11 @@
+import inspect
 import logging
+from datetime import datetime
+
 import pytest
 import os
 from selenium import webdriver
+from selenium.common import NoSuchElementException
 from poms.AdminLoginPageObjects import LoginPage
 
 link_admin = "https://www.blogger.com/about/?bpli=1"
@@ -16,17 +20,7 @@ text = ("What is Lorem Ipsum?Lorem Ipsum is simply dummy text of the printing an
 edit_text = "This is my Edit........."
 comment = "hello I'm a comment"
 title_name = "Blogger"
-
-
-def log_details():
-    cwd_path = os.getcwd()
-    print("Path is: ", cwd_path)
-    logging.basicConfig(filename="test.log",
-                        filemode="a",
-                        level=logging.INFO,
-                        format="%(asctime)s - %(levelname)s - %(message)s",
-                        force=True)
-    return logging.getLogger("selenium")
+path = os.getcwd()
 
 
 @pytest.fixture()
@@ -49,7 +43,7 @@ def login(driver, _email, _password):
     try:
         logger.info("  a.a. Click signin button")
         lp.click_sign_in()
-    except:
+    except NoSuchElementException:
         pass
     logger.info(" b. Enter email and Click next button")
     lp.set_email(_email)
@@ -66,8 +60,6 @@ def send_options():
     # Disable automatic close
     options.add_experimental_option("detach", True)
 
-    options.binary_location = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-
     # Adding argument to disable the AutomationControlled flag
     options.add_argument("--disable-blink-features=AutomationControlled")
 
@@ -78,3 +70,19 @@ def send_options():
     options.add_experimental_option("useAutomationExtension", False)
 
     return options
+
+
+def take_screenshot(driver):
+    time_stamp = datetime.now().strftime("%H.%M.%S")
+    method = inspect.stack()[1].function
+    driver.save_screenshot(f"{path}\\tmp\\screenshots\\{time_stamp}_{method}.png")
+    log_details().info(f"Screen shot will be in {path}\\tmp\\screenshots as {time_stamp}_{method}.png")
+
+
+def log_details():
+    logging.basicConfig(filename=f"{path}\\tmp\\Test.log",
+                        filemode="a",
+                        level=logging.INFO,
+                        format="%(asctime)s - %(levelname)s - %(message)s",
+                        force=True)
+    return logging.getLogger("selenium")

@@ -2,7 +2,7 @@ import time
 import pytest
 from poms.AdminHomePageObjects import AddPost
 from poms.EditPostPageObjects import EditPost
-from configs.Config import login, link_admin, edit_text, setup_driver, log_details
+from configs.Config import login, link_admin, edit_text, setup_driver, log_details, take_screenshot
 from Credentials import email, password
 
 """
@@ -53,4 +53,4 @@ class TestEditPost:
         eddited_text = self.ap.get_published()
 
         self.logger.info("8. Check if the new text is in eddited_text")
-        assert edit_text in eddited_text, "The first element does not contain text edit"
+        assert edit_text in eddited_text, take_screenshot(self.driver)

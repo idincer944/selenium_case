@@ -1,5 +1,5 @@
 import pytest
-from configs.Config import link_guest, comment, setup_driver, log_details
+from configs.Config import link_guest, comment, setup_driver, log_details, take_screenshot
 from poms.GuestPageObjects import GuestPage
 
 """
@@ -27,7 +27,7 @@ class TestGuestPage:
 
         self.logger.info("2. Check if there is post")
         is_post = self.gp.check_post()
-        assert is_post
+        assert is_post, take_screenshot(self.driver)
 
         self.logger.info("3. Click Post a Comment button, login and add comment")
         self.gp.add_comment(comment)
@@ -37,4 +37,4 @@ class TestGuestPage:
         comment_text = comments_list[-1].text
 
         self.logger.info("5. Check if added comment in the last comment")
-        assert comment in comment_text
+        assert comment in comment_text, take_screenshot(self.driver)

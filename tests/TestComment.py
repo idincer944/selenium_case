@@ -1,7 +1,7 @@
 import time
 import pytest
 from poms.CommentPageObjects import CheckComment
-from configs.Config import login, link_admin, comment, link_guest, setup_driver, log_details
+from configs.Config import login, link_admin, comment, link_guest, setup_driver, log_details, take_screenshot
 from Credentials import email, password
 
 global comment_id_admin
@@ -58,7 +58,7 @@ class TestCheckComment:
                          f"store it in global variable get_comment_admin_id -> {comment_id_admin}")
 
         self.logger.info("6. Check if added comment is in the last comment in Admin page")
-        assert comment in _last_comment
+        assert comment in _last_comment, take_screenshot(self.driver)
         self.logger.info("7. Close browser")
 
     @pytest.mark.parametrize("setup_driver", [link_admin], indirect=True)
@@ -80,7 +80,6 @@ class TestCheckComment:
 
         self.logger.info("11. Click delete comment")
         self.cc.click_delete_comment()
-        time.sleep(3)
         self.logger.info("Comment deleted successfully!")
         self.logger.info("12. Close browser")
 
@@ -101,5 +100,5 @@ class TestCheckComment:
 
         global comment_id_admin
         self.logger.info(f"15. Compare comment_id_admin and self.comment_id_with_c -> {comment_id_admin}")
-        assert comment_id_admin != self.comment_id_with_c
+        assert comment_id_admin != self.comment_id_with_c, take_screenshot(self.driver)
         self.logger.info("16. Close browser")
