@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.common.by import By
 from configs.Config import login
 from Credentials import email, password

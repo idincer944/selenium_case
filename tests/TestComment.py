@@ -1,4 +1,3 @@
-import time
 import pytest
 from poms.CommentPageObjects import CheckComment
 from configs.Config import login, link_admin, comment, link_guest, setup_driver, log_details, take_screenshot
